@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Todo from './Todo';
-import addTodoForm from './addTodoForm';
+import AddTodoForm from './AddTodoForm';
 const uuidv4 = require('uuid/v4');
 
 function TodoList() {
@@ -14,16 +14,24 @@ function TodoList() {
   ]);
 
   const addTodo = name => {
-    let newTodos = [...todos, name];
+    let newTodos = [...todos, { id: uuidv4(), name }];
     setTodos(newTodos);
   };
+
+  const removeTodo = name => {
+    let filteredTodos = todos.filter(todo => {
+      return todo.name !== name;
+    });
+    setTodos(filteredTodos);
+  };
+
   let todolist = todos.map(todo => {
-    return <Todo key={todo.id} name={todo.name} />;
+    return <Todo key={todo.id} name={todo.name} removeTodo={removeTodo} />;
   });
 
   return (
     <div>
-      <addTodoForm addTodo={addTodo} />
+      <AddTodoForm addTodo={addTodo} />
       {todolist}
     </div>
   );

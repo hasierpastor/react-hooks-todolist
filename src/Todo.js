@@ -1,7 +1,15 @@
 import React from 'react';
 
-function Todo(todo) {
-  return <div>{todo.name}</div>;
+function Todo({ name, removeTodo }) {
+  const remove = () => {
+    removeTodo(name);
+  };
+  return (
+    <div>
+      {name}
+      <button onClick={remove}>Remove Todo</button>
+    </div>
+  );
 }
 
 export default Todo;
