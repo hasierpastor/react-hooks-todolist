@@ -1,5 +1,7 @@
 import React from 'react';
 
-function Todo() {}
+function Todo(todo) {
+  return <div>{todo.name}</div>;
+}
 
 export default Todo;
