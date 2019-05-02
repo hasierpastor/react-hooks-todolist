@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Todo({ name, removeTodo }) {
+  //call removeTodo passed down from parent
   const remove = () => {
     removeTodo(name);
   };

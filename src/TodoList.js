@@ -4,6 +4,7 @@ import AddTodoForm from './AddTodoForm';
 const uuidv4 = require('uuid/v4');
 
 function TodoList() {
+  //initial state
   const [todos, setTodos] = useState([
     { id: uuidv4(), name: 'Sleep' },
     {
@@ -13,11 +14,13 @@ function TodoList() {
     { id: uuidv4(), name: 'Study' }
   ]);
 
+  //fucntion addTodo adds new todo and setsTodos to be new list
   const addTodo = name => {
     let newTodos = [...todos, { id: uuidv4(), name }];
     setTodos(newTodos);
   };
 
+  //removeTodo function takes in name, filters todos and setTodos to filtered todos
   const removeTodo = name => {
     let filteredTodos = todos.filter(todo => {
       return todo.name !== name;
